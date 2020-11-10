@@ -4,6 +4,10 @@ set nocompatible
 " 字符超出边界自动换行
 set wrap
 
+" 自动补全配色更改Pmenu 列表选项颜色，PmenuSel 选中项颜色
+highlight Pmenu ctermfg=LightGreen ctermbg=Black
+highlight PmenuSel ctermfg=Black ctermbg=DarkYellow
+
 " 文件类型检测
 filetype on
 filetype indent on
@@ -91,26 +95,15 @@ let g:rehash256 = 1
 " NerdTree
 map ff :NERDTreeToggle<CR>
 
-" ycm
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-" let g:ycm_collect_identifiers_from_tag_files = 1 
-" let g:ycm_min_num_of_chars_for_completion = 1 
-" let g:ycm_cache_omnifunc=0          " 禁止缓存匹配项，每次都重新生成匹配项
-" let g:ycm_seed_identifiers_with_syntax=1 " 语法关键字补全
-" " map gd :YcmCompleter GoToDefinition<CR>
-" " map gc :YcmCompleter GoToDeclaration<CR>
-" map gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" coc.nvim
+set hidden
 
- "let g:ycm_semantic_triggers =  {
-			 "\   'c': ['->', '.','re![a-za-z]'],
-			 "\   'objc': ['->', '.', 're!\[[_a-za-z]+\w*\s', 're!^\s*[^\w\d]\w*\s',
-			 "\            're!\[.*\]\s'],
-			 "\   'ocaml': ['.', '#'],
-			 "\   'cpp,cuda,objcpp': ['->', '.', '::','(', 're![a-za-z]'],
-			 "\   'perl': ['->'],
-			 "\   'php': ['->', '::'],
-			 "\   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
-			 "\   'ruby,rust': ['.', '::'],
-			 "\   'lua': ['.', ':'],
-			 "\   'erlang': [':'],
-			 "\ }
+set cmdheight=2
+
+set updatetime=100
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
